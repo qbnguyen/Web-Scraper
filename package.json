@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/qbnguyen/Web-Scraper/issues"
   },
-  "homepage": "https://github.com/qbnguyen/Web-Scraper#readme"
+  "homepage": "https://github.com/qbnguyen/Web-Scraper#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "mongojs": "^2.6.0"
+  }
 }
