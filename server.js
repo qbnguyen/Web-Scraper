@@ -15,7 +15,7 @@ app.use (express.urlencoded({extended:true}));
 // var collections = ["scrapedData"];
 
 // var db = mongojs(databaseUrl, collections);
-var mongoConfig = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/scraper";
+var mongoConfig = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/scraper8";
 mongoose.connect(mongoConfig);
 var db = mongoose.connection;
 

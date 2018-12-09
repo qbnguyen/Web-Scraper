@@ -10,7 +10,7 @@ var router = express.Router()
 router.get("/scrape", function(req, res){
 
 
-    axios.get("https://www.nhl.com/").then(function(response) {
+    axios.get("https://www.nhl.com").then(function(response) {
     
       // Load the body of the HTML into cheerio
       var $ = cheerio.load(response.data);
@@ -23,20 +23,24 @@ router.get("/scrape", function(req, res){
         var title = $(element).text();
     
         // Find the h4 tag's parent a-tag, and save it's href value as "link"
-        var link = $(element).parent().attr("href");
-    
+        var link ="https://www.nhl.com" + $(element).parent().attr("href");
+        var summary = $(element).parent().find("h5").text();
+    console.log("summary", summary);
         // Make an object with data we scraped for this h4 and push it to the results array
         if(title && link){
     
-        db.scrapedData.insert({
+        Articles.create({
           title: title,
-          link: link
+          link: link,
+          summary: summary
         },
+
         function(err, inserted){
           if (err){
             console.log(err);
           }
           else{
+            console.log("=========")
             console.log(inserted);
           }
         });
@@ -44,7 +48,7 @@ router.get("/scrape", function(req, res){
       });
     });
       // After looping through each h4.headline-link, log the results
-      console.log(results);
+      // console.log(results);
       // res.send("Scrape Complete");
     res.redirect("/articles");
     });

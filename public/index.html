@@ -10,18 +10,37 @@
         <script src="https://code.jquery.com/jquery.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
-		<script src="public/js/index.js"></script>
+		<script src="js/index.js"></script>
 
         
             <script id="page-template" type="text/x-handlebars-template">
+                <div class="container"> 
+                    <div class="row">
+                        <div class="col-sm-9">
+  
                 <h1>News!!!</h1>
     
                 <ul>
                     {{#each articles}}
-                        <li>{{article}}</li>
+                        <li>
+                            <h4>{{title}}</h4>
+                        <p>{{summary}}</p>
+                        <a href="{{link}}">Read</a>
+                        <a  data-id="{{_id}}" class="saveNote">Notes</a>
+                        </li>
                     {{/each}}
                 </ul>
-            </script>
+            </div>
+            <div class="col-sm-3">
+                <h1>Notes</h1>
+                <div id="notes">
+                    <div id ="titleInput">
+
+                    </div>
+                </div>
+        </div>
+    </div>
+        </script>
 </head>
 <body>
     
